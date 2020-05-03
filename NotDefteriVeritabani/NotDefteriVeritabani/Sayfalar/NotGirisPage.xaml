@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NotDefteriVeritabani.NotGirisPage">
+
+    <StackLayout x:Name="notGirisStackLayout" 
+                         Margin="10,35,10,10"
+                         Orientation="Vertical">
+        <Label Text="Notlarım"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold" />
+        <Editor x:Name="notGirisi"
+                        Text="{Binding NotMetin}"
+                        Placeholder="Notunuzu giriniz."
+                        HeightRequest="100" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="kaydetButton"
+                            Grid.Row="0"  
+                            Grid.Column="0"
+                            Clicked="kaydetButton_Clicked"
+                            Text="KAYDET"/>
+            <Button Grid.Row="0" x:Name="silButton"
+                    Clicked="silButton_Clicked"
+                    
+                            Grid.Column="1"
+                            Text="SİL" />
+        </Grid>
+        <ScrollView >
+            <ListView x:Name="notlarListView" ItemSelected="notlarListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NotMetin}"
+                                      Detail="{Binding NotTarih}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
